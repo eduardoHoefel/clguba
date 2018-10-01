@@ -1,4 +1,3 @@
-#pylint:disable=all
-import sys,codecs,argparse,string
-from functools import reduce as E #encoded is R
-print(eval('(lambda '+codecs.encode(','.join(string.ascii_lowercase[:len(sys.argv)-2])+':'+sys.argv[1], 'rot_13')+')('+','.join(sys.argv[2:])+')'))
+import sys,codecs,functools as F
+_,E,Z=sys.argv,F.reduce,','.join
+print(eval('(lambda %s:%s)(%s)'%(Z('nopqrstuvwxyzabcdefghijklm'[:len(_)-2]),codecs.encode(_[1],'rot_13'),Z(_[2:]))))
